@@ -1,0 +1,36 @@
+.projectStats .statistic {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+.projectStats .progress {
+  margin-bottom: 14px !important;
+}
+
+.projectShowSidebar {
+  margin-top: 80px;
+}
+
+.projectShowSidebar .statistic {
+  width: 100%;
+  margin-bottom: 14px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.projectCard .creator {
+  margin-top: 7px;
+}
+
+.projectCard .creator span {
+  margin-left: 5px;
+}
+
+.navLogo {
+  position: absolute !important;
+  left: 50%;
+  margin-left: -92px !important;
+  font-size: 1.5em;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
