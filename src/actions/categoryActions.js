@@ -1,9 +1,9 @@
+import CategoryAdapter from '../adapters/categoriesAdapter'
 
 export function getCategories() {
   return function (dispatch) {
     dispatch({type: 'GETTING_CATEGORIES'})
-    fetch('http://localhost:3000/api/v1/categories')
-    .then(resp => resp.json())
+    CategoryAdapter.getCategories()
     .then(resp => {
       if (resp.error) {
         dispatch({type: 'FAILED_GET_CATEGORIES'})
