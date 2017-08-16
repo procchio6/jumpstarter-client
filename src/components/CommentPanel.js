@@ -63,7 +63,7 @@ class CommentPanel extends Component {
             disabled={!this.props.loggedIn}
           />
         </Form>
-        <Comment.Group>
+        <Comment.Group className='commentPanel panel'>
           {comments.length > 0 ? comments : <strong>No comments have been posted!</strong>}
         </Comment.Group>
       </Dimmer.Dimmable>

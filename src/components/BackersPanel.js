@@ -23,11 +23,13 @@ class BackersPanel extends Component {
     ))
 
     return (
-      <Dimmer.Dimmable as={Segment} dimmed={this.state.loading} attached='bottom' padded='very'>
+      <Dimmer.Dimmable as={Segment} dimmed={this.state.loading} attached='bottom' padded='very' >
         <Dimmer active={this.state.loading} inverted>
           <Loader />
         </Dimmer>
-        {pledges.length > 0 ? pledges: <strong>No pledges have been made!</strong>}
+        <div className='panel'>
+          {pledges.length > 0 ? pledges: <strong>No pledges have been made!</strong>}
+        </div>
       </Dimmer.Dimmable>
     )
   }

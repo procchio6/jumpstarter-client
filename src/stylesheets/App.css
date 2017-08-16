@@ -34,3 +34,15 @@
   padding-top: 6px !important;
   padding-bottom: 6px !important;
 }
+
+.panel {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.commentPanel {
+  width: 100% !important;
+  max-width: none !important;
+  border: 1px solid #d4d4d5;
+  padding: 20px 20px 20px 20px;
+}
