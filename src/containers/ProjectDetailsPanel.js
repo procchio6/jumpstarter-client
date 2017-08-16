@@ -18,7 +18,7 @@ export default class ProjectDetailsPanel extends Component {
         <Route path='/projects/:id' component={ProjectDetailsMenu} />
 
         <Route exact path='/projects/:id' render={() => (
-          <CampaignPanel content={project.campaign_content}/>
+          <CampaignPanel content={project.campaign_content} loading={this.props.loading}/>
         )}/>
 
         <Route path='/projects/:id/faq' component={FaqPanel}/>

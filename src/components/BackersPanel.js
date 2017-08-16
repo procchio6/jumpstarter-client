@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Feed, Segment } from 'semantic-ui-react'
+import { Feed, Segment, Dimmer, Loader } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { accounting } from 'accounting'
 import moment from 'moment'
@@ -8,9 +8,13 @@ import { getPledges } from '../actions/projectActions'
 
 class BackersPanel extends Component {
 
+  state = {
+    loading: true
+  }
+
   componentDidMount() {
     const projectId = this.props.match.params.id
-    this.props.getPledges(projectId)
+    this.props.getPledges(projectId).then(() => this.setState({loading: false}))
   }
 
   render() {
@@ -19,9 +23,12 @@ class BackersPanel extends Component {
     ))
 
     return (
-      <Segment attached='bottom' padded='very'>
+      <Dimmer.Dimmable as={Segment} dimmed={this.state.loading} attached='bottom' padded='very'>
+        <Dimmer active={this.state.loading} inverted>
+          <Loader />
+        </Dimmer>
         {pledges.length > 0 ? pledges: <strong>No pledges have been made!</strong>}
-      </Segment>
+      </Dimmer.Dimmable>
     )
   }
 }

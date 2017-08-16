@@ -12,12 +12,14 @@ import ProjectStats from '../components/ProjectStats'
 
 class ProjectShowContainer extends Component {
 
-  state = {}
+  state = {
+    loading: true
+  }
 
   componentDidMount() {
     window.scrollTo(0, 0)
     const projectId = this.props.match.params.id
-    this.props.getProject(projectId)
+    this.props.getProject(projectId).then(() => this.setState({loading: false}))
   }
 
   handleContextRef = contextRef => this.setState({ contextRef })
@@ -44,12 +46,16 @@ class ProjectShowContainer extends Component {
             <Header as='h1'>{project.name}</Header>
             <p>{project.description}</p>
             <Image fluid src='http://lorempixel.com/400/200/technics' />
-            <ProjectDetailsPanel project={project}/>
+            <ProjectDetailsPanel project={project} loading={this.state.loading} />
           </Grid.Column>
           <Grid.Column width={4} >
             <div className='projectShowSidebar'>
               <Sticky offset={80} context={contextRef}>
-                <ProjectStats statistics={statistics} percent_funded={project.percent_funded}/>
+                <ProjectStats
+                  statistics={statistics}
+                  percent_funded={project.percent_funded}
+                  loading={this.state.loading}
+                />
                 <PledgeCard
                   projectId={project.id}
                   onCreatePledge={this.props.createPledge}

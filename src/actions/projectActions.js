@@ -1,4 +1,5 @@
 import ProjectAdapter from '../adapters/projectsAdapter'
+import CommentsAdapter from '../adapters/commentsAdapter'
 import history from '../history'
 
 export function getProjects() {
@@ -38,7 +39,7 @@ export function createProject(formData) {
 export function getProject(projectId) {
   return function (dispatch) {
     dispatch({type: 'GETTING_PROJECT', payload: projectId})
-    ProjectAdapter.getProject(projectId)
+    return ProjectAdapter.getProject(projectId)
     .then(project => {
       if (project.error) {
         dispatch({type: 'GET_PROJECT_FAILED', payload: project.error})
@@ -67,12 +68,26 @@ export function getBackers(projectId) {
 export function getPledges(projectId) {
   return function (dispatch) {
     dispatch({type: 'GETTING_PLEDGES', payload: {projectId}})
-    ProjectAdapter.getPledges(projectId)
+    return ProjectAdapter.getPledges(projectId)
     .then(pledges => {
       if (pledges.error) {
         dispatch({type: 'GET_PLEDGES_FAILED', payload: pledges.error})
       } else {
         dispatch({type: 'LOAD_PLEDGES', payload: pledges})
+      }
+    })
+  }
+}
+
+export function getComments(projectId) {
+  return function (dispatch) {
+    dispatch({type: 'GETTING_COMMENTS', payload: {projectId}})
+    return CommentsAdapter.getComments(projectId)
+    .then(comments => {
+      if (comments.error) {
+        dispatch({type: 'GET_COMMENTS_FAILED', payload: comments.error})
+      } else {
+        dispatch({type: 'LOAD_COMMENTS', payload: comments})
       }
     })
   }

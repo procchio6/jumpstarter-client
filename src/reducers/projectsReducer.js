@@ -1,11 +1,11 @@
-export default function projectsReducer(state={currentProject: {pledges:[]}, list:[]}, action) {
+export default function projectsReducer(state={currentProject: {pledges:[], comments:[]}, list:[]}, action) {
   switch (action.type) {
     case "LOAD_PROJECT":
       return {
         ...state,
         currentProject: {
-          ...action.payload,
-          pledges: state.currentProject.pledges
+          ...state.currentProject,
+          ...action.payload
         }
       }
     case "LOAD_PROJECTS":
@@ -24,6 +24,22 @@ export default function projectsReducer(state={currentProject: {pledges:[]}, lis
         currentProject: {
           ...state.currentProject,
           pledges: [action.payload, ...state.currentProject.pledges]
+        }
+      }
+    case "LOAD_COMMENTS":
+      return {
+        ...state,
+        currentProject: {
+          ...state.currentProject,
+          comments: action.payload
+        }
+      }
+    case "PLEDGE_CREATED":
+      return {
+        ...state,
+        currentProject: {
+          ...state.currentProject,
+          comments: [action.payload, ...state.currentProject.comments]
         }
       }
     default:
