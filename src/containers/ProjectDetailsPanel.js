@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom'
 
 import ProjectDetailsMenu from '../components/ProjectDetailsMenu'
 import CampaignPanel from '../components/CampaignPanel'
-import FaqPanel from '../components/FaqPanel'
 import CommentPanel from '../components/CommentPanel'
 import BackersPanel from '../components/BackersPanel'
 
@@ -21,7 +20,6 @@ export default class ProjectDetailsPanel extends Component {
           <CampaignPanel content={project.campaign_content} loading={this.props.loading}/>
         )}/>
 
-        <Route path='/projects/:id/faq' component={FaqPanel}/>
         <Route path='/projects/:id/comments' component={CommentPanel}/>
         <Route path='/projects/:id/backers' component={BackersPanel}/>
       </div>

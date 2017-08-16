@@ -9,7 +9,6 @@ export default class ProjectDetailsMenu extends Component {
     return (
       <Menu attached='top' tabular>
         <Menu.Item name='Campaign' as={NavLink} exact to={`${url}`} />
-        <Menu.Item name='FAQ' as={NavLink} to={`${url}/faq`} />
         <Menu.Item name='Comments' as={NavLink} to={`${url}/comments`} />
         <Menu.Item name='Backers' as={NavLink} to={`${url}/backers`} />
       </Menu>
