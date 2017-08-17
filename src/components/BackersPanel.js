@@ -27,7 +27,7 @@ class BackersPanel extends Component {
         <Dimmer active={this.state.loading} inverted>
           <Loader />
         </Dimmer>
-        <div className='panel'>
+        <div className='panel backersPanel'>
           {pledges.length > 0 ? pledges: <strong>No pledges have been made!</strong>}
         </div>
       </Dimmer.Dimmable>
