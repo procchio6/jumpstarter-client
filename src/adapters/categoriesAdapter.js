@@ -6,7 +6,7 @@ class CategoryAdapter {
 
   // pledeData = {amount: num, project_id: int}
   static getCategories(pledgeData) {
-    return fetch(`${ROOT_URL}/categories`)
+    return fetch(`${ROOT_URL}/categories`, {headers: headers()})
     .then(resp => resp.json())
   }
 
