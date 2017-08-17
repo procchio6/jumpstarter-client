@@ -30,7 +30,7 @@ class App extends Component {
         <Route path='/' component={Nav} />
         <Container>
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' render={(props) => <Home {...props}/>} />
 
             <Route path='/projects/new' component={Authorize(NewProjectForm)} />
             <Route path='projects/me' component={ProjectShowContainer} />
