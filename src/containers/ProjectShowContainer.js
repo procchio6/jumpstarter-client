@@ -39,6 +39,17 @@ class ProjectShowContainer extends Component {
 
     const { contextRef } = this.state
 
+
+    const isProjectCurrentUsers = (() => {
+      if (project.creator) {
+        return project.creator.id === this.props.currentUserId
+      } else {
+        return false
+      }
+    })()
+
+    const projectOver = project.days_left <= 0
+
     return (
       <div ref={this.handleContextRef}>
         <Grid>
@@ -59,7 +70,7 @@ class ProjectShowContainer extends Component {
                 <PledgeCard
                   projectId={project.id}
                   onCreatePledge={this.props.createPledge}
-                  disabled={project.days_left <= 0}
+                  disabled={projectOver || isProjectCurrentUsers}
                 />
               </Sticky>
             </div>
@@ -71,7 +82,10 @@ class ProjectShowContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  return {project: state.projects.currentProject}
+  return {
+    project: state.projects.currentProject,
+    currentUserId: state.auth.currentUser.id
+  }
 }
 
 export default connect(mapStateToProps, {getProject, createPledge})(ProjectShowContainer)
