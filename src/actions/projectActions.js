@@ -1,12 +1,21 @@
 import ProjectAdapter from '../adapters/projectsAdapter'
 import CommentsAdapter from '../adapters/commentsAdapter'
 import history from '../history'
+import parse from 'parse-link-header'
 
-export function getProjects() {
+export function getProjects(page) {
   return function (dispatch) {
     dispatch({type: 'GETTING_PROJECTS'})
 
-    ProjectAdapter.getProjects()
+    ProjectAdapter.getProjects(page)
+    .then(resp => {
+      const paginationLinks = parse(resp.headers.get('Link'))
+      const total = resp.headers.get('Total')
+      const perPage = resp.headers.get('Per-Page')
+
+      dispatch({type: 'PROJECT_PAGINATION', payload: {total, perPage, ...paginationLinks}})
+      return resp.json()
+    })
     .then(projects => {
       if (projects.errors) {
         dispatch({type: 'GETTING_PROJECTS_FAILED', payload: projects.errors})

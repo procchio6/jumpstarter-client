@@ -3,10 +3,10 @@ import headers from './headers'
 const ROOT_URL = process.env.REACT_APP_API_URL
 
 class ProjectsAdapter {
-  static getProjects(option = '') {
-    return fetch(`${ROOT_URL}/projects/${option}`, {
+  static getProjects(page) {
+    return fetch(`${ROOT_URL}/projects/?page=${page}`, {
       headers: headers()
-    }).then(resp => resp.json())
+    })
   }
 
   static getProject(projectId) {
