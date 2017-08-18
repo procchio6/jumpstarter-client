@@ -17,7 +17,7 @@ export default function (ComposedComponent, inheritedProps) {
       }
     }
     render(){
-      return <ComposedComponent  {...this.props} />
+      return <ComposedComponent  {...inheritedProps} />
     }
   }
   return Authentication
