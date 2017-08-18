@@ -20,6 +20,7 @@ class PaginationLinks extends Component {
             <Menu.Item name='Back'
               as={Link}
               to={`${match.path}?page=${parseInt(currentPage, 10) - 1}`}
+              onClick={(e) => window.scrollTo(0, 0)}
             /> : null
           }
           <Menu.Item disabled >{`${currentPage} / ${totalPages}`}</Menu.Item>
@@ -28,6 +29,7 @@ class PaginationLinks extends Component {
             <Menu.Item name='Next'
               as={Link}
               to={`${match.path}?page=${parseInt(currentPage, 10) + 1}`}
+              onClick={(e) => window.scrollTo(0, 0)}
             /> : null
           }
         </Menu>
