@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
-  Button, Card, Dropdown, Form, Grid, Input, Label, Message, TextArea
+  Button, Card, Dropdown, Form, Grid, Input, Label, Message, TextArea, Header
 } from 'semantic-ui-react'
 
 import Editor from 'draft-js-editor'
@@ -22,6 +22,7 @@ class NewProjectForm extends Component {
     this.state = {
       name: '',
       description: '',
+      image: '',
       funding_goal: '100',
       fund_by_date: moment().add(1, 'days'),
       category_id: '',
@@ -78,12 +79,26 @@ class NewProjectForm extends Component {
     })
   }
 
+  handleImageUpload = (e) => {
+    const file = e.target.files[0]
+    const reader = new FileReader()
+
+    reader.onload = function(e) {
+      const imageBase64 = e.target.result
+      this.setState({image: imageBase64})
+    }.bind(this)
+
+    reader.readAsDataURL(file)
+  }
+
   render() {
     return (
       <Grid centered>
         <Grid.Column mobile={12} tablet={8} computer={6} largeScreen={5} >
           <Card fluid>
-            <Card.Content header='Create Project' />
+            <Card.Content>
+              <Header content='Create Project' textAlign='center'/>
+            </Card.Content>
 
             <Card.Content>
               <Form onSubmit={this.handleSubmit}>
@@ -139,6 +154,16 @@ class NewProjectForm extends Component {
                 </Form.Field>
 
                 <Form.Field>
+                  <label>Image</label>
+                  <input
+                    name='image'
+                    type='file'
+                    accept='image/*'
+                    onChange={this.handleImageUpload.bind(this)}
+                  />
+                </Form.Field>
+
+                <Form.Field>
                   <label>Fund By</label>
                   <div style={{display: 'inline-block'}}>
                     <DatePicker
@@ -154,6 +179,7 @@ class NewProjectForm extends Component {
                 </Form.Field>
 
                 <Button
+                  fluid
                   type='submit'
                   color='green'
                   loading={this.props.creatingProject}
