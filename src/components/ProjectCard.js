@@ -18,7 +18,10 @@ class ProjectCard extends Component {
 
     return (
       <Card className='projectCard' link as={Link} to={`/projects/${project.id}`}>
-        <Image fluid src='http://lorempixel.com/400/200/technics' />
+        {
+          project.image ?
+          <Image fluid src={project.image.url} /> : null
+        }
         <Card.Content>
           <Card.Header>{project.name}</Card.Header>
           <Card.Meta>{project.category.name}</Card.Meta>
