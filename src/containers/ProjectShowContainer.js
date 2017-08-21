@@ -73,7 +73,7 @@ class ProjectShowContainer extends Component {
                 <PledgeCard
                   projectId={project.id}
                   onCreatePledge={this.props.createPledge}
-                  disabled={projectOver || isProjectCurrentUsers}
+                  disabled={projectOver || isProjectCurrentUsers || !this.props.currentUserId}
                 />
               </Sticky>
             </div>
