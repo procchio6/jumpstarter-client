@@ -57,7 +57,7 @@ class ProjectShowContainer extends Component {
             <Header as='h1'>{project.name}</Header>
             <p>{project.description}</p>
             {
-              project.image && !project.image.url.includes('default') ?
+              project.image && !project.image.url.includes('default') && !this.state.loading ?
               <Image fluid src={project.image.url} /> : null
             }
             <ProjectDetailsPanel project={project} loading={this.state.loading} />
