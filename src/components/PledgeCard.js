@@ -21,7 +21,13 @@ export default class PledgeCard extends Component {
 
   handleModalClose = (event) => this.setState({modalShown: false})
 
-  handleModalOpen = (event) => this.setState({modalShown: true})
+  handleModalOpen = (event) => {
+    if (this.state.amount > 0) {
+      this.setState({modalShown: true})
+    } else {
+      alert('Pledge must be greater than $0!')
+    }
+  }
 
   handlePledge = (event) => {
     const pledgeData = {amount: this.state.amount, project_id: this.props.projectId}

@@ -56,7 +56,10 @@ class ProjectShowContainer extends Component {
           <Grid.Column width={12}>
             <Header as='h1'>{project.name}</Header>
             <p>{project.description}</p>
-            <Image fluid src='http://lorempixel.com/400/200/technics' />
+            {
+              project.image ?
+              <Image fluid src={project.image.url} /> : null
+            }
             <ProjectDetailsPanel project={project} loading={this.state.loading} />
           </Grid.Column>
           <Grid.Column width={4} >
