@@ -29,7 +29,7 @@ class ProjectCard extends Component {
             {project.description}
           </Card.Description>
           <Card.Meta className='creator'>
-            <Image size='mini' avatar src='https://lorempixel.com/100/100'/>
+            <Image size='mini' avatar src={project.creator.avatar.url}/>
             <span>by {project.creator.full_name}</span>
           </Card.Meta>
         </Card.Content>

@@ -76,7 +76,7 @@ function ProjectComment({content, user, created_at}) {
 
   return (
     <Comment>
-      <Comment.Avatar src='https://lorempixel.com/200/200/technics' />
+      <Comment.Avatar src={user.avatar.url} />
       <Comment.Content>
         <Comment.Author as='span'>{`${user.first_name} ${user.last_name}`}</Comment.Author>
         <Comment.Metadata>

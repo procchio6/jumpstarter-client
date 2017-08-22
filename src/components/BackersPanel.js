@@ -42,7 +42,7 @@ function PledgeItem({amount, created_at, user}) {
     <Feed>
       <Feed.Event>
         <Feed.Label>
-          <img src='https://lorempixel.com/200/200/technics' alt='' />
+          <img src={user.avatar.url} alt='' />
         </Feed.Label>
         <Feed.Content>
           <Feed.Summary>
