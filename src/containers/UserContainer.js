@@ -34,12 +34,16 @@ export class UserContainer extends Component {
 
     return (
       <div>
-        <Header size='large'>
-          {`${this.props.user.first_name} ${this.props.user.last_name}`}
-          <Header.Subheader>
-            {`@${this.props.user.username}`}
-          </Header.Subheader>
-        </Header>
+        {
+          Object.values(this.props.user).length > 0 ?
+          <Header size='large'>
+            {`${this.props.user.first_name} ${this.props.user.last_name}`}
+            <Header.Subheader>
+              {`@${this.props.user.username}`}
+            </Header.Subheader>
+          </Header> : null
+        }
+
         <Menu pointing secondary>
           <Menu.Item name='Backed Projects' as={NavLink} exact to={`${url}/backed_projects`} />
           <Menu.Item name='Created Projects' as={NavLink} to={`${url}/projects`} />
