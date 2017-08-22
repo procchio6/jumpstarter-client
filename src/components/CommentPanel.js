@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Segment, Comment, Dimmer, Loader, Input, Form } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import moment from 'moment'
@@ -78,7 +79,9 @@ function ProjectComment({content, user, created_at}) {
     <Comment>
       <Comment.Avatar src={user.avatar.url} />
       <Comment.Content>
-        <Comment.Author as='span'>{`${user.first_name} ${user.last_name}`}</Comment.Author>
+        <Comment.Author as={Link} to={`/users/${user.id}/projects`} >
+          {`${user.first_name} ${user.last_name}`}
+        </Comment.Author>
         <Comment.Metadata>
           <div>{timeAgo}</div>
         </Comment.Metadata>

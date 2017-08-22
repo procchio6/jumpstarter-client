@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Feed, Segment, Dimmer, Loader } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { accounting } from 'accounting'
@@ -46,7 +47,7 @@ function PledgeItem({amount, created_at, user}) {
         </Feed.Label>
         <Feed.Content>
           <Feed.Summary>
-            <Feed.User as='span' className='username'>
+            <Feed.User as={Link} to={`/users/${user.id}/projects`} className='username'>
               {user.first_name} {user.last_name}
             </Feed.User> pledged {accounting.formatMoney(amount, '$', 0)}
             <Feed.Date>{timeAgo}</Feed.Date>

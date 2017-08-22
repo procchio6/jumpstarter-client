@@ -102,6 +102,36 @@ export function getComments(projectId) {
   }
 }
 
+export function getBackedProjects(userId) {
+  return function (dispatch) {
+    dispatch({type: 'GETTING_USER_BACKED_PROJECTS', payload: {userId}})
+    return ProjectAdapter.getBackedProjects(userId)
+    .then(resp => resp.json())
+    .then(projects => {
+      if (projects.error) {
+        dispatch({type: 'GET_USER_BACKED_PROJECTS_FAILED', payload: projects.error})
+      } else {
+        dispatch({type: 'LOAD_USER_BACKED_PROJECTS', payload: projects})
+      }
+    })
+  }
+}
+
+export function getUserProjects(userId) {
+  return function (dispatch) {
+    dispatch({type: 'GETTING_USERS_PROJECTS', payload: {userId}})
+    return ProjectAdapter.getUserProjects(userId)
+    .then(resp => resp.json())
+    .then(projects => {
+      if (projects.error) {
+        dispatch({type: 'GET_USERS_PROJECTS_FAILED', payload: projects.error})
+      } else {
+        dispatch({type: 'LOAD_USERS_PROJECTS', payload: projects})
+      }
+    })
+  }
+}
+
 export function clearErrors() {
   return {type: 'CLEAR_PROJECT_ERRORS'}
 }

@@ -27,9 +27,14 @@ render() {
 
         {this.props.auth.loggedIn ?
           <Menu.Menu position='right'>
+            <Menu.Item as={NavLink} to={`/users/${this.props.auth.currentUser.id}/backed_projects`} >
+              Backed Projects
+            </Menu.Item>
             <Dropdown item text={this.props.auth.currentUser.username}>
               <Dropdown.Menu>
-                <Dropdown.Item>My Projects</Dropdown.Item>
+                <Dropdown.Item as={Link} to={`/users/${this.props.auth.currentUser.id}/projects`}>
+                  My Projects
+                </Dropdown.Item>
                 <Dropdown.Item>Edit Account</Dropdown.Item>
                 <Dropdown.Item as={Link} to='/logout' onClick={this.props.logoutUser}>
                   Logout

@@ -48,6 +48,20 @@ class ProjectsAdapter {
       headers: headers()
     }).then(resp => resp.json())
   }
+
+  static getUserProjects(userId) {
+    return fetch(`${ROOT_URL}/users/${userId}/created_projects`, {
+      method: 'GET',
+      headers: headers()
+    })
+  }
+
+  static getBackedProjects(userId) {
+    return fetch(`${ROOT_URL}/users/${userId}/funded_projects`, {
+      method: 'GET',
+      headers: headers()
+    })
+  }
 }
 
 export default ProjectsAdapter
