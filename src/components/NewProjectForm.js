@@ -93,121 +93,121 @@ class NewProjectForm extends Component {
 
   render() {
     return (
-      <Grid centered>
-        <Grid.Column mobile={12} tablet={8} computer={6} largeScreen={5} >
-          <Card fluid>
-            <Card.Content>
-              <Header content='Create Project' textAlign='center'/>
-            </Card.Content>
+      <div>
+        {this.props.errors.length > 0 ?
+          <Message list={this.props.errors} error /> : null
+        }
+        <Grid centered>
+          <Grid.Column mobile={12} tablet={8} computer={6} largeScreen={5} >
+            <Card fluid>
+              <Card.Content>
+                <Header content='Create Project' textAlign='center'/>
+              </Card.Content>
 
-            <Card.Content>
-              <Form onSubmit={this.handleSubmit}>
+              <Card.Content>
+                <Form onSubmit={this.handleSubmit}>
 
-                <Form.Field>
-                  <label>Name</label>
-                  <input
-                    name='name'
-                    placeholder='Give your project a name...'
-                    value={this.state.name}
-                    onChange={this.handleInputChange}
-                  />
-                </Form.Field>
-
-                <Form.Field>
-                  <label>Description</label>
-                  <TextArea
-                    name='description'
-                    placeholder='Short description of your project...'
-                    style={{resize: 'none'}}
-                    value={this.state.description}
-                    onChange={this.handleInputChange}
-                  />
-                </Form.Field>
-
-                <Form.Field>
-                  <label>Funding Goal</label>
-                  <Input
-                    labelPosition='right'
-                    placeholder='Amount'
-                    name='funding_goal'
-                    type='number'
-                    min='100'
-                    max='1000000000'
-                    value={this.state.funding_goal}
-                    onChange={this.handleInputChange}
-                  >
-                    <Label basic>$</Label>
-                    <input/>
-                    <Label>.00</Label>
-                  </Input>
-                </Form.Field>
-
-                <Form.Field>
-                  <label>Category</label>
-                  <Dropdown fluid selection
-                    name='category_id'
-                    placeholder='Select a Category'
-                    value={this.state.category_id}
-                    options={this.categoryOptions()}
-                    onChange={this.handleDropDownChange}
-                  />
-                </Form.Field>
-
-                <Form.Field>
-                  <label>Image</label>
-                  <input
-                    name='image'
-                    type='file'
-                    accept='image/*'
-                    onChange={this.handleImageUpload.bind(this)}
-                  />
-                </Form.Field>
-
-                <Form.Field>
-                  <label>Fund By</label>
-                  <div style={{display: 'inline-block'}}>
-                    <DatePicker
-                      className='datePicker'
-                      selected={this.state.fund_by_date}
-                      onChange={this.handleDateChange}
-                      minDate={moment().add(1, 'days')}
+                  <Form.Field>
+                    <label>Name</label>
+                    <input
+                      name='name'
+                      placeholder='Give your project a name...'
+                      value={this.state.name}
+                      onChange={this.handleInputChange}
                     />
-                  </div>
-                  <Label pointing='left' style={{top: '8px'}}>
-                    {this.state.fund_by_date.diff(moment(), 'days') + 1 + ' days'}
-                  </Label>
-                </Form.Field>
+                  </Form.Field>
 
-                <Button
-                  fluid
-                  type='submit'
-                  color='green'
-                  loading={this.props.creatingProject}
-                >
-                  Create Project
-                </Button>
-              </Form>
-            </Card.Content>
+                  <Form.Field>
+                    <label>Description</label>
+                    <TextArea
+                      name='description'
+                      placeholder='Short description of your project...'
+                      style={{resize: 'none'}}
+                      value={this.state.description}
+                      onChange={this.handleInputChange}
+                    />
+                  </Form.Field>
 
-            {this.props.errors.length > 0 ?
-              <Message list={this.props.errors} error attached /> : null
-            }
+                  <Form.Field>
+                    <label>Funding Goal</label>
+                    <Input
+                      labelPosition='right'
+                      placeholder='Amount'
+                      name='funding_goal'
+                      type='number'
+                      min='100'
+                      max='1000000000'
+                      value={this.state.funding_goal}
+                      onChange={this.handleInputChange}
+                    >
+                      <Label basic>$</Label>
+                      <input/>
+                      <Label>.00</Label>
+                    </Input>
+                  </Form.Field>
 
-          </Card>
-        </Grid.Column>
+                  <Form.Field>
+                    <label>Category</label>
+                    <Dropdown fluid selection
+                      name='category_id'
+                      placeholder='Select a Category'
+                      value={this.state.category_id}
+                      options={this.categoryOptions()}
+                      onChange={this.handleDropDownChange}
+                    />
+                  </Form.Field>
 
-        <Grid.Column stretched mobile={12} tablet={8} computer={10} largeScreen={11}>
-          <Card fluid>
-            <Card.Content style={{padding: '42px'}}>
-              <Editor
-                placeholder='Let people know why your project is awesome...'
-                onChange={this.handleEditorChange}
-                editorState={this.state.campaign_content}
-              />
-            </Card.Content>
-          </Card>
-        </Grid.Column>
-      </Grid>
+                  <Form.Field>
+                    <label>Image</label>
+                    <input
+                      name='image'
+                      type='file'
+                      accept='image/*'
+                      onChange={this.handleImageUpload.bind(this)}
+                    />
+                  </Form.Field>
+
+                  <Form.Field>
+                    <label>Fund By</label>
+                    <div style={{display: 'inline-block'}}>
+                      <DatePicker
+                        className='datePicker'
+                        selected={this.state.fund_by_date}
+                        onChange={this.handleDateChange}
+                        minDate={moment().add(1, 'days')}
+                      />
+                    </div>
+                    <Label pointing='left' style={{top: '8px'}}>
+                      {this.state.fund_by_date.diff(moment(), 'days') + 1 + ' days'}
+                    </Label>
+                  </Form.Field>
+
+                  <Button
+                    fluid
+                    type='submit'
+                    color='green'
+                    loading={this.props.creatingProject}
+                  >
+                    Create Project
+                  </Button>
+                </Form>
+              </Card.Content>
+            </Card>
+          </Grid.Column>
+
+          <Grid.Column stretched mobile={12} tablet={8} computer={10} largeScreen={11}>
+            <Card fluid>
+              <Card.Content style={{padding: '42px'}}>
+                <Editor
+                  placeholder='Let people know why your project is awesome...'
+                  onChange={this.handleEditorChange}
+                  editorState={this.state.campaign_content}
+                />
+              </Card.Content>
+            </Card>
+          </Grid.Column>
+        </Grid>
+      </div>
     )
   }
 }
