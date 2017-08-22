@@ -12,6 +12,18 @@ export class UserContainer extends Component {
 
   componentDidMount() {
     const userId = this.props.match.params.id
+    this.getData(userId)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const userId = this.props.match.params.id
+    const nextUserId = nextProps.match.params.id
+    if (nextUserId !== userId) {
+      this.getData(nextUserId)
+    }
+  }
+
+  getData = (userId) => {
     this.props.selectUser(userId)
     this.props.getBackedProjects(userId)
     this.props.getUserProjects(userId)
