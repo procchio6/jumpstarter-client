@@ -10,9 +10,9 @@ import Home from './containers/Home'
 import LoginForm from './components/LoginForm'
 import Nav from './components/Nav'
 import NewProjectForm from './components/NewProjectForm'
-import ProjectsContainer from './containers/ProjectsContainer'
 import ProjectShowContainer from './containers/ProjectShowContainer'
 import SignupForm from './components/SignupForm'
+import UserContainer from './containers/UserContainer'
 
 import './stylesheets/App.css';
 
@@ -35,7 +35,8 @@ class App extends Component {
             <Route path='/projects/new' component={Authorize(NewProjectForm)} />
             <Route path='projects/me' component={ProjectShowContainer} />
             <Route path='/projects/:id' component={ProjectShowContainer} />
-            <Route exact path='/projects' component={ProjectsContainer} />
+
+            <Route path='/users/:id' component={UserContainer} />
 
             <Route path='/login'
               render={ ({history}) => (

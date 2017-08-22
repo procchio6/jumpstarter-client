@@ -24,4 +24,10 @@ export default class AuthAdapter {
       headers: headers()
     }).then(res => res.json())
   }
+
+  static selectUser(userId) {
+    return fetch(`${baseUrl}/users/${userId}`, {
+      headers: headers()
+    }).then(res => res.json())
+  }
 }

@@ -1,4 +1,5 @@
 import AuthAdapter from '../adapters/authAdapter'
+import history from '../history'
 
 export function signupUser(formData) {
   return function (dispatch) {
@@ -44,6 +45,19 @@ export function getCurrentUser() {
     .then( (resp) => {
       if (!resp.error) {
         dispatch({type: 'SET_CURRENT_USER', payload: resp})
+      }
+    })
+  }
+}
+
+export function selectUser(userId) {
+  return function (dispatch) {
+    AuthAdapter.selectUser(userId)
+    .then( user => {
+      if (!user.error) {
+        dispatch({type: 'SELECT_USER', payload: user})
+      } else {
+        history.push('/')
       }
     })
   }

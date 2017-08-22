@@ -27,7 +27,7 @@ render() {
 
         {this.props.auth.loggedIn ?
           <Menu.Menu position='right'>
-            <Menu.Item as={NavLink} to={`/users/${this.props.auth.currentUser.id}/funded_projects`} >
+            <Menu.Item as={NavLink} to={`/users/${this.props.auth.currentUser.id}/backed_projects`} >
               Backed Projects
             </Menu.Item>
             <Dropdown item text={this.props.auth.currentUser.username}>
