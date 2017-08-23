@@ -185,7 +185,7 @@ class ProjectForm extends Component {
                     <input
                       name='image'
                       type='file'
-                      accept='image/*'
+                      accept='image/jpeg,image/png'
                       onChange={this.handleImageUpload.bind(this)}
                     />
                   </Form.Field>

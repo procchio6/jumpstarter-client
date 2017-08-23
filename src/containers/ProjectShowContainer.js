@@ -59,7 +59,7 @@ class ProjectShowContainer extends Component {
             <p>{project.description}</p>
             {
               project.image && !project.image.url.includes('default') && !this.state.loading ?
-              <Image fluid src={project.image.url + "?random=" + new Date().getTime()} /> : null
+              <Image fluid src={project.image.url} /> : null
             }
             <ProjectDetailsPanel project={project} loading={this.state.loading} />
           </Grid.Column>
