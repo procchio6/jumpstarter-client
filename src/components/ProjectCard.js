@@ -20,7 +20,7 @@ class ProjectCard extends Component {
       <Card className='projectCard' link as={Link} to={`/projects/${project.id}`}>
         {
           project.image ?
-          <Image fluid src={project.image.url} /> : null
+          <Image fluid src={project.image.url + "?random=" + new Date().getTime()} /> : null
         }
         <Card.Content>
           <Card.Header>{project.name}</Card.Header>
