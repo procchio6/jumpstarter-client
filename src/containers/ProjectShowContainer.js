@@ -77,12 +77,14 @@ class ProjectShowContainer extends Component {
                   disabled={projectOver || isProjectCurrentUsers || !this.props.currentUserId}
                 />
                 {
-                  isProjectCurrentUsers &&
+                  isProjectCurrentUsers ?
                   <Segment>
                     <Button as={Link} to={`${this.props.match.url}/edit`} fluid positive>
                       Edit Project
                     </Button>
                   </Segment>
+                  :
+                  null
                 }
               </Sticky>
             </div>

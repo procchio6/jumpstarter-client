@@ -127,10 +127,6 @@ class ProjectForm extends Component {
           <Grid.Column mobile={12} tablet={8} computer={6} largeScreen={5} >
             <Card fluid>
               <Card.Content>
-                <Header content='Create Project' textAlign='center'/>
-              </Card.Content>
-
-              <Card.Content>
                 <Form onSubmit={this.handleSubmit}>
 
                   <Form.Field>
