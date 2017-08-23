@@ -60,10 +60,10 @@ export function getProject(projectId) {
   }
 }
 
-export function updateProject(projectId) {
+export function updateProject(projectData) {
   return function (dispatch) {
-    dispatch({type: 'UPDATING_PROJECT', payload: projectId})
-    return ProjectAdapter.updateProject(projectId)
+    dispatch({type: 'UPDATING_PROJECT', payload: projectData})
+    return ProjectAdapter.updateProject(projectData)
     .then(project => {
       if (project.errors) {
         dispatch({type: 'UPDATE_PROJECT_FAILED', payload: project.errors})
