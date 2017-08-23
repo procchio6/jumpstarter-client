@@ -127,6 +127,7 @@ class ProjectForm extends Component {
           <Grid.Column mobile={12} tablet={8} computer={6} largeScreen={5} >
             <Card fluid>
               <Card.Content>
+
                 <Form onSubmit={this.handleSubmit}>
 
                   <Form.Field>
@@ -212,7 +213,9 @@ class ProjectForm extends Component {
                   >
                     Save
                   </Button>
+
                 </Form>
+
               </Card.Content>
             </Card>
           </Grid.Column>
