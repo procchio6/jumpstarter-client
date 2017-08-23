@@ -35,7 +35,7 @@ render() {
                 <Dropdown.Item as={Link} to={`/users/${this.props.auth.currentUser.id}/projects`}>
                   My Projects
                 </Dropdown.Item>
-                <Dropdown.Item>Edit Account</Dropdown.Item>
+                {/* <Dropdown.Item>Edit Account</Dropdown.Item> */}
                 <Dropdown.Item as={Link} to='/logout' onClick={this.props.logoutUser}>
                   Logout
                 </Dropdown.Item>
