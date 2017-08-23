@@ -20,5 +20,5 @@ export default function (ComposedComponent, inheritedProps) {
       return <ComposedComponent  {...inheritedProps} />
     }
   }
-  return Authentication
+  return <Authentication />
 }

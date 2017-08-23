@@ -28,7 +28,7 @@ class ProjectsAdapter {
       method: 'PATCH',
       headers: headers(),
       body: JSON.stringify(project)
-    })
+    }).then(resp => resp.json())
   }
 
   static deleteProject(projectID) {

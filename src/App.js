@@ -13,6 +13,7 @@ import NewProjectForm from './components/NewProjectForm'
 import ProjectShowContainer from './containers/ProjectShowContainer'
 import SignupForm from './components/SignupForm'
 import UserContainer from './containers/UserContainer'
+import EditProject from './components/EditProject'
 
 import './stylesheets/App.css';
 
@@ -32,8 +33,8 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={(props) => <Home {...props}/>} />
 
-            <Route path='/projects/new' component={Authorize(NewProjectForm)} />
-            <Route path='projects/me' component={ProjectShowContainer} />
+            <Route path='/projects/new' render={(props) => Authorize(NewProjectForm, props)} />
+            <Route path='/projects/:id/edit' render={(props) => Authorize(EditProject, props)} />
             <Route path='/projects/:id' component={ProjectShowContainer} />
 
             <Route path='/users/:id' component={UserContainer} />

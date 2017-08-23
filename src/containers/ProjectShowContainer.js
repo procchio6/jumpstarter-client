@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Grid, Header, Image, Sticky } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Grid, Header, Image, Sticky, Segment, Button } from 'semantic-ui-react'
 import accounting from 'accounting'
 
 import { getProject } from '../actions/projectActions'
@@ -75,6 +76,14 @@ class ProjectShowContainer extends Component {
                   onCreatePledge={this.props.createPledge}
                   disabled={projectOver || isProjectCurrentUsers || !this.props.currentUserId}
                 />
+                {
+                  isProjectCurrentUsers &&
+                  <Segment>
+                    <Button as={Link} to={`${this.props.match.url}/edit`} fluid positive>
+                      Edit Project
+                    </Button>
+                  </Segment>
+                }
               </Sticky>
             </div>
           </Grid.Column>

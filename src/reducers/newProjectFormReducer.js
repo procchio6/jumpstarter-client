@@ -4,6 +4,8 @@ export default function newProjectFormReducer(state={errors: [], creatingProject
       return {...state, creatingProject: true}
     case "CREATE_PROJECT_FAILED":
       return {...state, errors: [...action.payload], creatingProject: false}
+    case "UPDATE_PROJECT_FAILED":
+      return {...state, errors: [...action.payload], creatingProject: false}
     case "CLEAR_PROJECT_ERRORS":
       return {...state, errors: []}
     case "PROJECT_CREATED":

@@ -60,6 +60,21 @@ export function getProject(projectId) {
   }
 }
 
+export function updateProject(projectId) {
+  return function (dispatch) {
+    dispatch({type: 'UPDATING_PROJECT', payload: projectId})
+    return ProjectAdapter.updateProject(projectId)
+    .then(project => {
+      if (project.errors) {
+        dispatch({type: 'UPDATE_PROJECT_FAILED', payload: project.errors})
+      } else {
+        dispatch({type: 'PROJECT_UPDATED', payload: project})
+        history.push(`/projects/${project.id}`)
+      }
+    })
+  }
+}
+
 export function getBackers(projectId) {
   return function (dispatch) {
     dispatch({type: 'GETTING_BACKERS', payload: {projectId}})
