@@ -50,6 +50,7 @@ class App extends Component {
               )}
             />
             <Route path='/logout' render={() => <Redirect to='/' />}/>
+            <Route path='/*' render={() => <Redirect to='/' />}/>
           </Switch>
         </Container>
       </div>
