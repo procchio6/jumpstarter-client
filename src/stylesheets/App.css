@@ -35,6 +35,12 @@
   padding-bottom: 6px !important;
 }
 
+@media (max-width: 600px) {
+  .navLogo {
+    display: none !important;
+  }
+}
+
 .panel {
   max-height: 500px;
   overflow-y: auto;
