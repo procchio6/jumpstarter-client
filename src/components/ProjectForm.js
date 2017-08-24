@@ -198,6 +198,7 @@ class ProjectForm extends Component {
                         selected={this.state.fund_by_date}
                         onChange={this.handleDateChange}
                         minDate={moment().add(1, 'days')}
+                        readOnly
                       />
                     </div>
                     <Label pointing='left' style={{top: '8px'}}>
