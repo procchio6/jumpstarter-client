@@ -44,6 +44,9 @@ render() {
           </Menu.Menu>
         :
           <Menu.Menu position='right'>
+            <Menu.Item name='login' as={NavLink} to='/signup' >
+              Signup
+            </Menu.Item>
             <Menu.Item name='login' as={NavLink} to='/login' >
               Login
             </Menu.Item>
